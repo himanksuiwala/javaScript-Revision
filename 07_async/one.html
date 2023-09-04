@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>Origanl element</h1>
+    <button id="start" type="button">Start TimeOut</button>
+
+    <button id="stop" type="button">Stop TimeOut</button>
+  </body>
+  <script>
+    let strtButton = document.getElementById("start");
+    let stopButton = document.getElementById("stop");
+
+    let updateText = function (text) {
+      let element = document.querySelector("h1");
+      if (text) {
+        element.innerHTML = "Stopped the Execution";
+      } else {
+        element.innerHTML = "Updated Element";
+      }
+    };
+    // let startTimeOut = setTimeout(updateText, 2000);
+    strtButton.addEventListener("click", () => {
+      let startTimeOut = setTimeout(updateText(), 2000);
+    });
+
+    strtButton.addEventListener("click", () => {
+      setTimeout(updateText, 2000);
+    });
+
+    // strtButton.addEventListener('click',()=>{
+    //   setTimeout(() => {
+    //   let element = document.querySelector("h1");
+    //   element.innerHTML = "Updated Element";
+    // }, 2000);
+    // })
+
+    stopButton.addEventListener("click", () => {
+      clearTimeout(startTimeOut);
+      updateText("STOP");
+    });
+  </script>
+</html>
